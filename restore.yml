@@ -1,0 +1,8 @@
+---
+- name : copy of tomcat-users.xml to controller and add a line in manged nodes
+  hosts: all
+  tasks:
+   - copy :
+      src: /tmp/{{ansible_hostname}}/etc/tomcat8/tomcat-users.xml
+      dest: /etc/tomcat8/tomcat-users.xml
+...

@@ -1,0 +1,11 @@
+---
+- name: To remove a line using regular expression
+  hosts: all
+  tasks:
+   - lineinfile:
+      path: /etc/tomcat8/tomcat-users.xml
+      backup: yes
+      firstmatch: yes
+      regexp: '^\\<'
+      line: ""
+...

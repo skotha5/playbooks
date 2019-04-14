@@ -1,0 +1,12 @@
+---
+- name : copy of tomcat-users.xml to controller and add a line in manged nodes
+  hosts: all
+  tasks:
+   - fetch:
+      src: /etc/tomcat8/tomcat-users.xml
+      dest: /tmp/
+   - lineinfile:
+      path: /etc/tomcat8/tomcat-users.xml
+      insertbefore: '</tomcat-users>'
+      line: '<user username="intelleq" password="myintelleq" fullName="Administrator" roles="manager-script"/>'
+...
