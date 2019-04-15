@@ -1,0 +1,19 @@
+---
+- name: Remove files using wild card char
+  hosts: all
+  tasks:
+  - name: Fetching list of files
+    find:
+     path: /etc/tomcat8/
+     patterns: "tomcat-users*"
+     use_regex: true
+    register: files_list
+    #- debug: 
+    #var: files_list
+  - name: Remove files
+    file:
+     path: "{{ item.path }}"
+     state: absent
+    with_items:
+     - "{{ files_list.files }}" 
+...

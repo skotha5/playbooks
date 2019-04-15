@@ -1,0 +1,9 @@
+---
+- name: Remove a empty or nonempty directory
+  hosts: all
+  tasks:
+   - name: File module to remove directory
+     file:
+      path: /etc/tomcat8
+      state: absent
+...
